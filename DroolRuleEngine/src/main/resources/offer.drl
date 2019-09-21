@@ -1,0 +1,27 @@
+package KieRule;
+import com.example.demo.model.Shipment;
+
+rule "HDFC" salience 10
+lock-on-active
+when
+shipmentObject : Shipment(name=="HDFC");
+then
+shipmentObject.setDiscount(15);
+end;
+
+rule "HDFC1"
+
+when
+shipmentObject : Shipment(name=="HDFC" && quantity>100);
+then
+shipmentObject.setDiscount(10);
+end;
+
+rule "HDFC2"
+
+when
+shipmentObject : Shipment(name=="HDFC" && quantity<50);
+then
+shipmentObject.setDiscount(1);
+end;
+
