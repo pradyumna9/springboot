@@ -6,7 +6,7 @@ lock-on-active
 when
 shipmentObject : Shipment(name=="HDFC");
 then
-shipmentObject.setDiscount(15);
+shipmentObject.setDiscount(19);
 end;
 
 rule "HDFC1"
