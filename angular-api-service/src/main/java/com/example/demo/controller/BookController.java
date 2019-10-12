@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.example.demo.repo.BookRepository;
  *
  */
 @RestController
+@CrossOrigin(origins = "*")
 public class BookController {
 
 	@Autowired
@@ -25,7 +27,7 @@ public class BookController {
 	@PostMapping("/savebook")
 	public String saveBook(@RequestBody Book book) {
 		bookRepository.save(book);
-		return "The Book-"+book.getBookName()+" successfully saved with price"+book.getPrice();
+		return "The Book-"+book.getBookName()+" successfully saved with price:"+book.getBookPrice();
 	}
 	@GetMapping("/getbook/{bookName}")
 	public Book getBookByName(@PathVariable String bookName) {
